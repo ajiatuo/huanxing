@@ -1,0 +1,12 @@
+site:
+  title: 唤醒学苑
+  author: ajiatuo
+  baseURL: http://localhost:1717
+  language: zh-CN
+
+content:
+  store: file
+  dir: content
+
+build:
+  output: public
