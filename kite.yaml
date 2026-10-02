@@ -10,3 +10,5 @@ content:
 
 build:
   output: public
+theme:
+  name: vane

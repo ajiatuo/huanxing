@@ -1,0 +1,47 @@
+{{- $s := .Site.ThemeSettings -}}
+{{- $lang := .Site.Language -}}
+{{- $kind := printf "%s" .Page.Kind -}}
+{{- /* A page listed in the docs tree is drawn with the tree beside it,
+       unless it asked for the wide layout, which is drawn without. */ -}}
+{{- $inTree := and (eq $kind "single") (ne (printf "%v" .Page.Params.layout) "wide") (partial "tree-has.html" (dict "site" .Site "url" .Page.RelPermalink)) -}}
+{{- $class := "" -}}
+{{- if $inTree }}{{ $class = "has-tree" }}{{ else if eq $kind "home" }}{{ $class = "is-home" }}{{ end -}}
+{{- if $s.texture }}{{ $class = str.Trim (printf "%s grain" $class) }}{{ end -}}
+<!DOCTYPE html>
+<html lang="{{ $lang }}"{{ with $s.color_scheme }}{{ if or (eq . "light") (eq . "dark") }} data-theme="{{ . }}"{{ end }}{{ end }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ partial "meta.html" . }}
+  {{ partial "theme-init.html" . }}
+  <link rel="stylesheet" href="{{ url.Rel "vane/vane.css" }}">
+  {{- with $s.accent }}
+  <style>:root { --accent-base: {{ . }}; }</style>
+  {{- end }}
+  <script src="{{ url.Rel "vane/vane.js" }}" defer></script>
+  {{ block "head" . }}{{ end }}
+  {{ .Site.HeadHTML }}
+</head>
+<body{{ with $class }} class="{{ . }}"{{ end }}
+  data-copy="{{ partial "t.html" (dict "k" "copy" "lang" $lang) }}"
+  data-copied="{{ partial "t.html" (dict "k" "copied" "lang" $lang) }}"
+  data-anchor="{{ partial "t.html" (dict "k" "anchor" "lang" $lang) }}"
+  data-terminal="{{ partial "t.html" (dict "k" "terminal" "lang" $lang) }}"
+  data-search-label="{{ partial "t.html" (dict "k" "search_label" "lang" $lang) }}"
+  data-search-placeholder="{{ partial "t.html" (dict "k" "search_placeholder" "lang" $lang) }}"
+  data-search-empty="{{ partial "t.html" (dict "k" "search_empty" "lang" $lang) }}">
+  <a class="skip" href="#main">{{ partial "t.html" (dict "k" "skip" "lang" $lang) }}</a>
+  {{- /* The menu of a narrow screen. A checkbox opens it without a script,
+         and it sits before everything it opens, as the stylesheet needs. */}}
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-controls="sidebar" aria-label="{{ partial "t.html" (dict "k" "menu" "lang" $lang) }}">
+  {{ partial "announcement.html" . }}
+  {{ partial "header.html" . }}
+  <label for="nav-toggle" class="backdrop" aria-hidden="true"></label>
+  <div class="layout">
+    {{ partial "sidebar.html" . }}
+    <main id="main" class="main">{{ block "main" . }}{{ end }}</main>
+  </div>
+  {{ partial "footer.html" . }}
+  {{ .Site.FooterHTML }}
+</body>
+</html>
