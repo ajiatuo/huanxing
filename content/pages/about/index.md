@@ -1,7 +1,7 @@
 ---
 
 id: 01M3YQBW3WP439JFCFPSHWKBQ4
-title: 关于唤醒学苑
+title: 关于我们
 slug: about
 status: published
 created\_at: 2026-10-02T16:32:40Z

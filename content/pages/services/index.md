@@ -1,7 +1,7 @@
 ---
 
 id: 01M3YQBW3WCRZFAHJXBBZC947S
-title: 服务与课程
+title: 服务课程
 slug: services
 status: published
 created\_at: 2026-10-02T16:32:40Z
