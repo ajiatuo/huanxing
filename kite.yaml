@@ -12,3 +12,11 @@ build:
   output: public
 theme:
   name: vane
+menus:
+  main:
+    - name: 关于唤醒学苑
+      url: /contact/
+    - name: 服务与课程
+      url: /services/
+    - name: 联系我们
+      url: /about/
