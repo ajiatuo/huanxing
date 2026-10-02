@@ -6,6 +6,12 @@ kite:
   version: 0.1.8
   checksums: sha256:f4a97818180b4b1234c808146ef440b96f7a069608114b1df50d3d3a79545e0c
 themes:
+  almanac:
+    version: 0.1.2
+    source: https://cdn.jsdelivr.net/gh/kite-plus/apps@main/index.json
+    resolved: https://cdn.jsdelivr.net/gh/kite-plus/apps@theme-almanac-0.1.2/almanac-0.1.2.zip
+    checksum: sha256:d741e8ee000fc126687b36b73255e3d04ea7940baf3472de4d17f73db63cf142
+    tree: sha256:dc3f8b542ad72b6fcf4293107e5cb51a8bfe2c425f7b866a9637d6edfa34fa1f
   vane:
     version: 1.0.2
     source: https://cdn.jsdelivr.net/gh/kite-plus/apps@main/index.json
