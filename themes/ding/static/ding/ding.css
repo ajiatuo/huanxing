@@ -57,6 +57,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* 标题用粗黑体，大气醒目；正文用楷体，温暖好读 */
+h1, h2, h3,
+.hero-title, .section-head h2, .card h3, .brand-name,
+.article-head h1, .listing-head h1, .news-list h3, .post-list h2,
+.contact-cards h3, .notfound h1, .prose h2, .prose h3 {
+  font-family: var(--sans);
+}
+
 /* 纸张纤维 */
 body.grain::after {
   content: "";
@@ -173,10 +181,10 @@ img { max-width: 100%; height: auto; }
   inset: 0;
   z-index: -1;
   background: url("hero-bg.webp") center 62% / cover no-repeat;
-  opacity: .5;
+  opacity: .78;
 }
 
-:root[data-theme="dark"] .hero::before { opacity: .28; }
+:root[data-theme="dark"] .hero::before { opacity: .32; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) .hero::before { opacity: .28; }
 }
@@ -255,14 +263,19 @@ img { max-width: 100%; height: auto; }
 .hero-actions { display: flex; gap: 1.1rem; justify-content: center; flex-wrap: wrap; }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
   padding: .8em 2.6em;
   border: 1px solid var(--ink);
-  border-radius: 2px;
+  border-radius: 999px;
   text-decoration: none;
   letter-spacing: .28em;
   text-indent: .28em;
   font-size: .92rem;
+  font-family: var(--sans);
+  font-weight: 700;;
   color: var(--ink);
   background: transparent;
 }
@@ -317,7 +330,7 @@ img { max-width: 100%; height: auto; }
   opacity: .55;
 }
 
-.section-head h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); letter-spacing: .2em; text-indent: .2em; font-weight: 600; margin: 0; }
+.section-head h2 { font-size: clamp(1.6rem, 3.6vw, 2.3rem); letter-spacing: .18em; text-indent: .18em; font-weight: 700; margin: 0; }
 .section-sub { color: var(--ink-soft); margin: 1rem 0 0; letter-spacing: .08em; }
 .more-link { display: inline-block; margin-top: 1.2rem; color: var(--ink-soft); text-decoration: none; letter-spacing: .2em; font-size: .88rem; }
 .more-link:hover { color: var(--gold); }
@@ -338,7 +351,21 @@ img { max-width: 100%; height: auto; }
 
 a.card-link:hover { border-color: var(--gold); transform: translateY(-4px); }
 
-.card-no { font-family: Georgia, serif; font-style: italic; color: var(--gold); font-size: 1rem; letter-spacing: .1em; }
+.card-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: .92rem;
+  letter-spacing: 0;
+}
 .card h3 { font-size: 1.12rem; letter-spacing: .14em; margin: .9rem 0 .7rem; font-weight: 600; }
 .card p { margin: 0; color: var(--ink-soft); font-size: .94rem; }
 
@@ -346,7 +373,14 @@ a.card-link:hover { border-color: var(--gold); transform: translateY(-4px); }
 .voices { background: var(--paper-2); }
 .voice-list { list-style: none; margin: 0 auto; padding: 0; max-width: 44rem; display: grid; gap: 2.6rem; }
 .voice-list blockquote { margin: 0; text-align: center; }
-.voice-list blockquote::before { content: "“"; display: block; font-size: 2.6rem; color: var(--gold); line-height: 1; margin-bottom: .4rem; }
+.voice-list blockquote {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.6rem 1.6rem 1.4rem;
+  margin: 0;
+}
+.voice-list blockquote::before { content: "“"; display: block; font-size: 3.4rem; color: var(--gold); line-height: 1; margin-bottom: .2rem; font-family: var(--sans); font-weight: 700; }
 .voice-list p { font-size: 1.12rem; letter-spacing: .06em; margin: 0 0 1rem; }
 .voice-list cite { font-style: normal; color: var(--ink-soft); letter-spacing: .24em; font-size: .86rem; }
 
