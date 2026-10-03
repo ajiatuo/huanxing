@@ -12,11 +12,57 @@ build:
   output: public
 theme:
   name: vane
+  settings:
+    tagline: 愿助你忆起生命的奇迹
+    accent: "#6d4fc2"
+    badge_tag: 心
+    badge_text: 坐落在全国五个地点的神秘学苑
+    hero_title: |-
+      愿助你忆起
+      *生命*的奇迹
+    hero_text: 唤醒学苑是坐落在全国五个地点的神秘学苑，旨在帮助生命链接高我，找到灵魂回家的路。
+    actions:
+      - label: 走进学苑
+        url: /about/
+      - label: 看看服务
+        url: /services/
+    features_label: 服务
+    features_title: 服务与课程
+    features:
+      - title: 生命修行咨询服务
+        text: 一对一的深度陪伴，陪你看清生命的课题，走出属于自己的路。
+        link: /services/
+      - title: 心意禅拍疗愈服务
+        text: 以拍打唤醒身体的记忆，温柔地松开那些卡住的情绪。
+        link: /services/
+      - title: 正念冥想系列课程
+        text: 从呼吸开始，回到当下，在正念中安顿身心。
+        link: /services/
+      - title: 女性觉醒系列课程
+        text: 唤醒女性内在的力量与温柔，活出本真的自己。
+        link: /services/
+      - title: 止语静心系列课程
+        text: 在止语的静谧里，听见内心真正的声音。
+        link: /services/
+      - title: 配套疗愈类产品
+        text: 为修行之路准备的温柔陪伴。
+        link: /services/
+    more_title: 找到我们
+    more_text: 欢迎留言，我们会尽快回复你。
+    more:
+      - title: 微信公众号
+        text: 稍后公布
+      - title: 微信号
+        text: 稍后公布
+      - title: 小红书
+        text: 稍后公布
+      - title: B站
+        text: 稍后公布
 menus:
   main:
     - name: 服务课程
       url: /services/
-    - name: 联系我们
-      url: /contact/
     - name: 关于我们
       url: /about/
+    - name: 联系我们
+      url: /contact/
