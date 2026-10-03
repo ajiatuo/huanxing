@@ -1,0 +1,35 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{{ url.For "home" }}">
+      <span class="brand-seal" aria-hidden="true">定</span>
+      <span class="brand-name">{{ .Site.Title }}</span>
+    </a>
+    {{- with .Site.Menus.main }}
+    <nav class="header-nav" aria-label="导航">
+      {{- range $item := . }}
+        {{- with $item.URL }}
+      <a class="nav-link" href="{{ . }}">{{ $item.Name }}</a>
+        {{- end }}
+      {{- end }}
+    </nav>
+    {{- end }}
+    <div class="header-tools">
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="切换白天夜晚">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </button>
+      <label for="nav-toggle" class="menu-button" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </label>
+    </div>
+  </div>
+  {{- with .Site.Menus.main }}
+  <nav class="drawer" aria-label="导航">
+    {{- range $item := . }}
+      {{- with $item.URL }}
+    <a class="drawer-link" href="{{ . }}">{{ $item.Name }}</a>
+      {{- end }}
+    {{- end }}
+  </nav>
+  {{- end }}
+</header>

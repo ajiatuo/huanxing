@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="listing">
+  <header class="listing-head">
+    <h1>{{ if eq .Page.Type "post" }}文章{{ else }}{{ .Page.Title }}{{ end }}</h1>
+  </header>
+  <ul class="post-list">
+    {{- range .Pages }}
+    <li>
+      {{- if not (time.IsZero .PublishDate) }}
+      <time datetime="{{ time.Format "2006-01-02" .PublishDate }}">{{ time.Format "2006 · 01 · 02" .PublishDate }}</time>
+      {{- end }}
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{- with .Excerpt }}<p>{{ . }}</p>{{ end }}
+    </li>
+    {{- else }}
+    <li class="empty">这里还没有文章，敬请期待。</li>
+    {{- end }}
+  </ul>
+  {{- with .Paginator }}
+    {{- if gt .TotalPages 1 }}
+  <nav class="pagination">
+    {{- if .HasPrev }}<a rel="prev" href="{{ .PrevURL }}">← 新的</a>{{ end }}
+    <span class="position">{{ .PageNumber }} / {{ .TotalPages }}</span>
+    {{- if .HasNext }}<a rel="next" href="{{ .NextURL }}">旧的 →</a>{{ end }}
+  </nav>
+    {{- end }}
+  {{- end }}
+</div>
+{{ end }}

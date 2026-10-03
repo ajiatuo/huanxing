@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand"><span class="brand-seal" aria-hidden="true">定</span>{{ .Site.Title }}</p>
+    {{- with .Site.Description }}
+    <p class="footer-desc">{{ . }}</p>
+    {{- end }}
+    <p class="copyright">{{ with .Site.ThemeSettings.copyright }}{{ . }}{{ else }}&copy; {{ time.Format "2006" .Site.BuildTime }} {{ .Site.Title }}{{ end }}</p>
+    <p class="credit"><a href="{{ url.Rel "rss.xml" }}">RSS</a><span aria-hidden="true"> · </span>由 <a href="https://github.com/kite-plus/kite" rel="noopener">Kite</a> 驱动</p>
+  </div>
+</footer>

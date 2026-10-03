@@ -1,0 +1,33 @@
+{{- $s := .Site.ThemeSettings -}}
+{{- $lang := .Site.Language -}}
+{{- $kind := printf "%s" .Page.Kind -}}
+<!DOCTYPE html>
+<html lang="{{ $lang }}"{{ with $s.color_scheme }}{{ if or (eq . "light") (eq . "dark") }} data-theme="{{ . }}"{{ end }}{{ end }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- $title := .Site.Title -}}
+  {{- if eq $kind "home" -}}
+    {{- with $s.tagline }}{{ $title = printf "%s · %s" $title . }}{{ end -}}
+  {{- else -}}
+    {{- with .Page.Title }}{{ $title = printf "%s · %s" . $title }}{{ end -}}
+  {{- end }}
+  <title>{{ $title }}</title>
+  {{- with .Site.Description }}<meta name="description" content="{{ . }}">{{ end }}
+  <link rel="stylesheet" href="{{ url.Rel "ding/ding.css" }}">
+  {{- with $s.accent }}
+  <style>:root { --accent: {{ . }}; }</style>
+  {{- end }}
+  <script src="{{ url.Rel "ding/ding.js" }}" defer></script>
+  {{ block "head" . }}{{ end }}
+  {{ .Site.HeadHTML }}
+</head>
+<body{{ if $s.texture }} class="grain"{{ end }}>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="菜单">
+  {{ partial "header.html" . }}
+  <label for="nav-toggle" class="backdrop" aria-hidden="true"></label>
+  <main id="main">{{ block "main" . }}{{ end }}</main>
+  {{ partial "footer.html" . }}
+  {{ .Site.FooterHTML }}
+</body>
+</html>

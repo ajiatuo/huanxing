@@ -1,0 +1,141 @@
+{{ define "main" }}
+{{- $s := .Site.ThemeSettings -}}
+{{- $site := .Site -}}
+<div class="home">
+
+  <section class="hero">
+    {{- if $s.hero_art }}
+    <div class="enso" role="img" aria-label="圆相"></div>
+    {{- end }}
+    <div class="hero-inner">
+      {{- with $s.badge_text }}
+      <p class="eyebrow">{{ with $s.badge_tag }}<span class="seal">{{ . }}</span>{{ end }}<span>{{ . }}</span></p>
+      {{- end }}
+      <h1 class="hero-title">
+        {{- with $s.hero_title }}
+          {{- range $i, $line := str.Split "\n" . }}
+            {{- if $i }}<br>{{ end }}
+            {{- range $j, $part := str.Split "*" $line }}
+              {{- if eq (math.Mod $j 2) 1 }}<span class="u">{{ $part }}</span>{{- else }}{{ $part }}{{ end }}
+            {{- end }}
+          {{- end }}
+        {{- else }}{{ $site.Title }}{{ end }}
+      </h1>
+      {{- with $s.hero_text }}
+      <p class="hero-sub">{{ . }}</p>
+      {{- end }}
+      {{- $any := false }}
+      {{- range $s.actions }}{{ if and .label .url }}{{ $any = true }}{{ end }}{{ end }}
+      {{- if $any }}
+      <div class="hero-actions">
+        {{- $first := true }}
+        {{- range $s.actions }}
+          {{- if and .label .url }}
+        <a class="btn{{ if $first }} primary{{ end }}" href="{{ url.Rel .url }}">{{ .label }}</a>
+            {{- $first = false }}
+          {{- end }}
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+    <p class="scroll-hint" aria-hidden="true"><span></span>向下</p>
+  </section>
+
+  {{- $hasF := false }}
+  {{- range $s.features }}{{ if or .title .text }}{{ $hasF = true }}{{ end }}{{ end }}
+  {{- if $hasF }}
+  <section class="section offerings">
+    <div class="section-head">
+      {{- with $s.features_label }}<p class="kicker">{{ . }}</p>{{ end }}
+      {{- with $s.features_title }}<h2>{{ . }}</h2>{{ end }}
+    </div>
+    <ul class="cards">
+      {{- $n := 0.0 }}
+      {{- range $f := $s.features }}
+        {{- if or $f.title $f.text }}
+          {{- $n = math.Add $n 1 }}
+      <li class="card">
+        {{- if $f.link }}<a class="card-link" href="{{ url.Rel $f.link }}">{{ else }}<div class="card-link">{{ end }}
+          <span class="card-no" aria-hidden="true">{{ printf "%.0f" $n }}</span>
+          {{- with $f.title }}<h3>{{ . }}</h3>{{ end }}
+          {{- with $f.text }}<p>{{ . }}</p>{{ end }}
+        {{ if $f.link }}</a>{{ else }}</div>{{ end }}
+      </li>
+        {{- end }}
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- $hasV := false }}
+  {{- range $s.voices }}{{ if .text }}{{ $hasV = true }}{{ end }}{{ end }}
+  {{- if $hasV }}
+  <section class="section voices">
+    <div class="section-head">
+      {{- with $s.voices_label }}<p class="kicker">{{ . }}</p>{{ end }}
+      {{- with $s.voices_title }}<h2>{{ . }}</h2>{{ end }}
+    </div>
+    <ul class="voice-list">
+      {{- range $s.voices }}
+        {{- if .text }}
+      <li>
+        <blockquote>
+          <p>{{ .text }}</p>
+          {{- with .name }}<cite>—— {{ . }}</cite>{{ end }}
+        </blockquote>
+      </li>
+        {{- end }}
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- if and $s.show_news .Pages }}
+  <section class="section news">
+    <div class="section-head">
+      <p class="kicker">近况</p>
+      <h2>最新文章</h2>
+      <a class="more-link" href="{{ url.For "list" "post" }}">全部文章 →</a>
+    </div>
+    <ul class="news-list">
+      {{- range $i, $p := .Pages }}
+        {{- if lt $i 3 }}
+      <li>
+        <a href="{{ $p.RelPermalink }}">
+          {{- if not (time.IsZero $p.PublishDate) }}
+          <time datetime="{{ time.Format "2006-01-02" $p.PublishDate }}">{{ time.Format "2006 · 01 · 02" $p.PublishDate }}</time>
+          {{- end }}
+          <h3>{{ $p.Title }}</h3>
+          {{- with $p.Excerpt }}<p>{{ . }}</p>{{ end }}
+        </a>
+      </li>
+        {{- end }}
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- $hasM := false }}
+  {{- range $s.more }}{{ if .title }}{{ $hasM = true }}{{ end }}{{ end }}
+  {{- if $hasM }}
+  <section class="section contact">
+    <div class="section-head">
+      {{- with $s.more_title }}<h2>{{ . }}</h2>{{ end }}
+      {{- with $s.more_text }}<p class="section-sub">{{ . }}</p>{{ end }}
+    </div>
+    <ul class="contact-cards">
+      {{- range $m := $s.more }}
+        {{- if $m.title }}
+      <li>
+        <h3>{{ $m.title }}</h3>
+        {{- with $m.text }}<p>{{ . }}</p>{{ end }}
+        {{- with $m.link }}<a href="{{ url.Rel . }}">{{ with $m.link_label }}{{ . }}{{ else }}前往 →{{ end }}</a>{{ end }}
+      </li>
+        {{- end }}
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+</div>
+{{ end }}

@@ -11,7 +11,7 @@ content:
 build:
   output: public
 theme:
-  name: vane
+  name: ding
   settings:
     tagline: 愿助你忆起生命的奇迹
     accent: "#6d4fc2"
@@ -47,6 +47,15 @@ theme:
       - title: 配套疗愈类产品
         text: 为修行之路准备的温柔陪伴。
         link: /services/
+    voices_label: 修习者的声音
+    voices_title: 他们在这里安顿了身心
+    voices:
+      - text: 在这里，我第一次学会了安住。原来回家，不需要去很远的地方。
+        name: 学员 · 小林
+      - text: 止语的三天，像给心洗了个澡。走出来的时候，连风都是安静的。
+        name: 学员 · 阿哲
+      - text: 老师说，奇迹不在远方，在每一次呼吸里。我现在信了。
+        name: 修习者 · 晚晴
     more_title: 找到我们
     more_text: 欢迎留言，我们会尽快回复你。
     more:

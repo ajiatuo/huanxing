@@ -1,0 +1,120 @@
+# 「定」主题在后台的中文说明。键跟 theme.yaml 对应；缺的部分按 theme.yaml 原文显示。
+theme:
+  title: 定
+  description: 给冥想中心与正念工作室的安静主题。暖纸墨字，一枚呼吸的圆相，一行标题；课程服务做成安静的卡片，有修习者的声音和最新文章，分白天夜晚两种样子，不从第三方加载任何资源。
+
+  settings:
+    brand:
+      label: 品牌
+    tagline:
+      label: 副标题
+      help: 首页标题里跟在站点名称后面的几个字。
+    accent:
+      label: 强调色
+      help: 印章、链接和小标记用这个颜色，按钮保持墨色。
+      options:
+        "#463a63": 墨紫
+        "#2f5d50": 松绿
+        "#a05a2c": 赭石
+        "#a8842c": 鎏金
+    color_scheme:
+      label: 白天或夜晚
+      help: 读者第一次看到的样子，之后仍可以用页头的按钮切换。
+      options:
+        auto: 跟随读者的系统
+        light: 白天
+        dark: 夜晚
+    texture:
+      label: 纸张纹理
+      help: 在页面上铺一层很淡的纸张纤维。
+
+    home:
+      label: 首页：标题
+    badge_text:
+      label: 眉题
+      help: 标题上方的一行短句，留空就不显示。
+    badge_tag:
+      label: 印章字
+      help: 眉题前面盖着的小印里的一个字。
+    hero_title:
+      label: 标题
+      help: 留空时使用站点标题。换行的地方标题里也换行；用两个星号括起来的字，*像这样*，下面会画一道金线。
+    hero_text:
+      label: 副标题
+      help: 标题下的一两句话。
+    actions:
+      label: 按钮
+      help: 第一个是墨色的主按钮。
+      fields:
+        label:
+          label: 文字
+        url:
+          label: 地址
+    hero_art:
+      label: 标题上方画一枚呼吸的圆相
+      help: 圆相会缓缓明暗，像在打坐。
+
+    home_features:
+      label: 首页：课程服务
+    features_label:
+      label: 小标题
+    features_title:
+      label: 标题
+    features:
+      label: 卡片
+      help: 安静的卡片，每张一个标题、一句话，填了链接就能点。
+      fields:
+        title:
+          label: 标题
+        text:
+          label: 文字
+        link:
+          label: 链接
+
+    home_voices:
+      label: 首页：修习者的声音
+    voices_label:
+      label: 小标题
+    voices_title:
+      label: 标题
+    voices:
+      label: 留言
+      help: 修习者的话，每条署一个名字。
+      fields:
+        text:
+          label: 话语
+        name:
+          label: 名字
+
+    home_end:
+      label: 首页：文章与联系
+    show_news:
+      label: 显示最新文章
+      help: 列出最新的三篇文章。
+    more_title:
+      label: 联系标题
+    more_text:
+      label: 联系说明
+    more:
+      label: 联系卡片
+      help: 首页末尾的几张卡片，每张一个标题和一句话，填了链接就能点。
+      fields:
+        title:
+          label: 标题
+        text:
+          label: 文字
+        link:
+          label: 链接
+        link_label:
+          label: 链接文字
+
+    footer:
+      label: 页脚
+    copyright:
+      label: 版权信息
+      help: 留空时，署名为站点本身，年份为最后一次构建的年份。
+
+  menus:
+    main:
+      label: 页头
+      description: 每一页顶部的链接，手机上在抽屉里。

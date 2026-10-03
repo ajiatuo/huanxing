@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="listing">
+  <header class="listing-head">
+    <p class="crumb"><a href="{{ url.For "taxonomy" .Page.Type }}">← {{ .Page.Type }}</a></p>
+    <h1>{{ .Page.Title }}</h1>
+  </header>
+  <ul class="post-list">
+    {{- range .Pages }}
+    <li>
+      {{- if not (time.IsZero .PublishDate) }}
+      <time datetime="{{ time.Format "2006-01-02" .PublishDate }}">{{ time.Format "2006 · 01 · 02" .PublishDate }}</time>
+      {{- end }}
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{- with .Excerpt }}<p>{{ . }}</p>{{ end }}
+    </li>
+    {{- else }}
+    <li class="empty">这里还没有文章。</li>
+    {{- end }}
+  </ul>
+</div>
+{{ end }}

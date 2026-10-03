@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="listing">
+  <header class="listing-head">
+    <h1>{{ .Page.Title }}</h1>
+  </header>
+  <ul class="term-list">
+    {{- range .Pages }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{- else }}
+    <li class="empty">还没有内容。</li>
+    {{- end }}
+  </ul>
+</div>
+{{ end }}

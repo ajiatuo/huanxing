@@ -1,0 +1,163 @@
+name: ding
+title: Ding
+version: 0.1.0
+apiVersion: kite/v1
+requires: ">=0.1.4 <2.0.0"
+description: A quiet theme for meditation centers and mindfulness studios. Warm rice paper in ink, a breathing enso above one line of headline, calm cards for offerings, voices of practitioners, and the latest writings, by day and by night. Nothing loads from third parties.
+author:
+  name: ajiatuo
+  url: https://awaker.edu.kg
+license: Apache-2.0
+homepage: https://awaker.edu.kg
+tags: [meditation, mindfulness, paper, serif, dark mode]
+
+capabilities: [static, dynamic]
+contentTypes: [post, page]
+taxonomies: [tags, categories]
+
+menus:
+  - name: main
+    label: Header
+    description: The links across the top of every page, and in the drawer on a phone.
+
+settings:
+  - key: brand
+    type: section
+    label: Brand
+    fields:
+      - key: tagline
+        type: string
+        label: Subtitle
+        help: A few words after the site's name in the title of the home page.
+      - key: accent
+        type: color
+        label: Accent color
+        help: Seals, links and small marks. Buttons stay in ink.
+        default: "#463a63"
+        options:
+          - {value: "#463a63", label: Ink violet}
+          - {value: "#2f5d50", label: Pine}
+          - {value: "#a05a2c", label: Rust}
+          - {value: "#a8842c", label: Gold}
+      - key: color_scheme
+        type: select
+        label: Day or night
+        help: What a reader sees first. They can still switch with the button in the header.
+        default: auto
+        options:
+          - {value: auto, label: Follow the reader's system}
+          - {value: light, label: Day}
+          - {value: dark, label: Night}
+      - key: texture
+        type: boolean
+        label: Paper grain
+        help: A faint grain over the page, like the fibers of paper.
+        default: true
+
+  - key: home
+    type: section
+    label: "Home page: the headline"
+    preview: home
+    fields:
+      - key: badge_text
+        type: string
+        label: Eyebrow
+        help: A short line above the headline. Left empty, there is none.
+      - key: badge_tag
+        type: string
+        label: Seal word
+        help: One word stamped in a small seal before the eyebrow.
+      - key: hero_title
+        type: text
+        label: Headline
+        help: Left empty, the site title is used. Each line starts a new line; words between two asterisks, *like these*, are underlined in gold.
+      - key: hero_text
+        type: text
+        label: Subtitle
+        help: A sentence or two under the headline.
+      - key: actions
+        type: repeat
+        label: Buttons
+        help: The first one is the main button, drawn in ink.
+        fields:
+          - {key: label, type: string, label: Label}
+          - {key: url, type: url, label: Address}
+      - key: hero_art
+        type: boolean
+        label: A breathing circle above the headline
+        help: An enso that slowly brightens and dims, like sitting.
+        default: true
+
+  - key: home_features
+    type: section
+    label: "Home page: offerings"
+    preview: home
+    fields:
+      - key: features_label
+        type: string
+        label: Small heading
+      - key: features_title
+        type: string
+        label: Title
+      - key: features
+        type: repeat
+        label: Offerings
+        help: Quiet cards, each with a title, a sentence and a link.
+        fields:
+          - {key: title, type: string, label: Title}
+          - {key: text, type: text, label: Text}
+          - {key: link, type: url, label: Link}
+
+  - key: home_voices
+    type: section
+    label: "Home page: voices"
+    preview: home
+    fields:
+      - key: voices_label
+        type: string
+        label: Small heading
+      - key: voices_title
+        type: string
+        label: Title
+      - key: voices
+        type: repeat
+        label: Voices
+        help: Words from practitioners, each with a name.
+        fields:
+          - {key: text, type: text, label: Words}
+          - {key: name, type: string, label: Name}
+
+  - key: home_end
+    type: section
+    label: "Home page: news and contact"
+    preview: home
+    fields:
+      - key: show_news
+        type: boolean
+        label: Show the latest writings
+        help: The three newest posts.
+        default: true
+      - key: more_title
+        type: string
+        label: Contact heading
+      - key: more_text
+        type: text
+        label: Contact text
+      - key: more
+        type: repeat
+        label: Contact cards
+        help: Cards at the end of the home page, each a title and a sentence, and a link if it has one.
+        fields:
+          - {key: title, type: string, label: Title}
+          - {key: text, type: text, label: Text}
+          - {key: link, type: url, label: Link}
+          - {key: link_label, type: string, label: Link text}
+
+  - key: footer
+    type: section
+    label: Footer
+    fields:
+      - key: copyright
+        type: string
+        label: Copyright
+        help: Left empty, the site is credited to itself for the year it was last built.

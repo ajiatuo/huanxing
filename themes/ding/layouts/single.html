@@ -1,0 +1,27 @@
+{{ define "main" }}
+<article class="article">
+  {{- if eq .Page.Type "post" }}
+  <p class="crumb"><a href="{{ url.For "list" "post" }}">← 文章</a></p>
+  {{- end }}
+  <header class="article-head">
+    <h1>{{ .Page.Title }}</h1>
+    {{- with .Page.Description }}
+    <p class="lead">{{ . }}</p>
+    {{- end }}
+    {{- if not (time.IsZero .Page.PublishDate) }}
+    <p class="meta"><time datetime="{{ time.Format "2006-01-02" .Page.PublishDate }}">{{ time.Format "2006年01月02日" .Page.PublishDate }}</time></p>
+    {{- end }}
+  </header>
+  <div class="prose">{{ .Page.Content }}</div>
+  {{- if or .Page.Prev .Page.Next }}
+  <nav class="pager">
+    {{- with .Page.Prev }}
+    <a rel="prev" href="{{ .RelPermalink }}"><span class="pager-dir">← 上一篇</span><span class="pager-title">{{ .Title }}</span></a>
+    {{- end }}
+    {{- with .Page.Next }}
+    <a rel="next" href="{{ .RelPermalink }}"><span class="pager-dir">下一篇 →</span><span class="pager-title">{{ .Title }}</span></a>
+    {{- end }}
+  </nav>
+  {{- end }}
+</article>
+{{ end }}
