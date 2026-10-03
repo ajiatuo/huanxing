@@ -11,7 +11,7 @@ content:
 build:
   output: public
 theme:
-  name: ding
+  name: vane
   settings:
     tagline: 愿助你忆起生命的奇迹
     accent: "#6d4fc2"
