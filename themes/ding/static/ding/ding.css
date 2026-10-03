@@ -10,7 +10,7 @@
   --seal: #9c3d2e;
   --line: #d6c5a0;
   --accent: #463a63;
-  --serif: "Songti SC", "STSong", "SimSun", "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN", Georgia, "Times New Roman", serif;
+  --serif: "Kaiti SC", "STKaiti", "KaiTi", "KaiTi_GB2312", "SimKai", "TW-Kai", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
   --sans: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", system-ui, sans-serif;
 }
 
@@ -232,10 +232,10 @@ img { max-width: 100%; height: auto; }
 }
 
 .hero-title {
-  font-size: clamp(1.9rem, 5.2vw, 3.2rem);
-  font-weight: 600;
-  letter-spacing: .1em;
-  line-height: 1.65;
+  font-size: clamp(2.6rem, 7.5vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1.5;
   margin: 0 0 1.4rem;
 }
 
